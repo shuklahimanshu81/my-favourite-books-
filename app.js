@@ -4,34 +4,53 @@ import { useState } from "react";
 
 const bookList = {
   selfLearning: [
-    { name: "Think and grow rich ",writer: "Napoleon Hill" },
-    { name: "Rich dad, Poor dad",writer: " Robert Kiyosaki" }
+    { name: "Think and grow rich ", writer: "Napoleon Hill", rating: "5" },
+    { name: "Rich dad, Poor dad", writer: " Robert Kiyosaki", rating: "4.5" },
+    {
+      name: "The Power of Positive Thinking",
+      writer: "Norman Vincent Peale",
+      rating: "4"
+    }
   ],
 
   novel: [
     {
       name: "The immortals of meluha",
-    writer: "Amish Tripathi"
+      writer: "Amish Tripathi",
+      rating: "5"
     },
     {
       name: "Lord of the rings",
-    writer: "J. R. R. Tolkien"
+      writer: "J. R. R. Tolkien",
+      rating: "4"
+    },
+    {
+      name: "Gunaho ka devta",
+      writer: "Dharmveer Bharti",
+      rating: "4.5"
     }
   ],
   fiction: [
     {
       name: "Game of Thrones ",
-    writer: " George R. R. Martin"
+      writer: " George R. R. Martin",
+      rating: "4"
     },
     {
       name: "13 Reasons why ?",
-    writer: "Jay Asher "
+      writer: "Jay Asher ",
+      rating: "5"
+    },
+    {
+      name: "Nirmala",
+      writer: "Premchand",
+      rating: "4.5"
     }
   ]
 };
 
 export default function App() {
-  const [selectedGenre, setGenre] = useState("novel");
+  const [genre, setGenre] = useState("novel");
   function genreClickHandler(genre) {
     setGenre(genre);
   }
@@ -62,7 +81,7 @@ export default function App() {
       <hr />
       <div style={{ textAlign: "center" }}>
         <ol>
-          {bookList[selectedGenre].map((book) => (
+          {bookList[genre].map((book) => (
             <li
               key={book.name}
               style={{
@@ -78,6 +97,7 @@ export default function App() {
               {" "}
               <div style={{ fontSize: "larger" }}> {book.name} </div>
               <div style={{ fontSize: "medium" }}> {book.writer} </div>
+              <div style={{ fontWeight: "bold" }}> rating : {book.rating} </div>
             </li>
           ))}
         </ol>
